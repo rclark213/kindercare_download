@@ -128,29 +128,35 @@ The script needs to "log in" as you, using a code your browser already has.
    ```
 4. Save the file (`Cmd+S` / `Ctrl+S`) and close the editor.
 
-### 3. Find your account number
+### 3. Find your account number and page count
 Look at the web address while you're on the activities page — it looks like:
 ```
-https://classroom.kindercare.com/accounts/504906/activities?page=1
+https://classroom.kindercare.com/accounts/YOUR_ACCOUNT_ID/activities?page=1
 ```
-The number after `/accounts/` (here, `504906`) is your account number.
+The number after `/accounts/` is your account number — you'll use it as
+`--account` below.
+
+Scroll to the bottom of the activities page to find the pagination controls
+(page numbers, or a "last page" / ">>" link). The highest page number shown
+is your total page count — you'll use it as `--pages` below.
 
 ### 4. Run it — test first, then the real thing
 Back in your Terminal/PowerShell window (make sure it still shows `(env)`
 at the start of the prompt — if not, redo the "activate" line from step 4
-above), run:
+above), run (replacing `YOUR_ACCOUNT_ID` with the number from step 3):
 ```
-python3 kindercare_download.py --account 504906 --pages 1 --out ./kindercare_media
+python3 kindercare_download.py --account YOUR_ACCOUNT_ID --pages 1 --out ./kindercare_media
 ```
 (On Windows, use `python` instead of `python3`.)
 
 This downloads just page 1 as a test. Open the new `kindercare_media`
 folder that appears and check the photos/videos are there and look right.
 
-Once that looks good, download everything (this will take a while — let it
-run):
+Once that looks good, download everything (replace `YOUR_ACCOUNT_ID` and
+`YOUR_PAGE_COUNT` with your own numbers from step 3 — this will take a
+while, so let it run):
 ```
-python3 kindercare_download.py --account 504906 --pages 142 --out ./kindercare_media
+python3 kindercare_download.py --account YOUR_ACCOUNT_ID --pages YOUR_PAGE_COUNT --out ./kindercare_media
 ```
 
 ### Notes
